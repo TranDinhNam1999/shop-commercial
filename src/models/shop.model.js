@@ -1,11 +1,14 @@
-'use strict';
-// #!dmbg
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
+// const { v4: uuidv4 } = require('uuid'); 
 
 const DOCUMENT_NAME = 'Shop';
 const COLLECTION_NAME = 'shops';
 
 const shopSchema = new Schema({
+    // _id: {
+    //     type: String,
+    //     default: uuidv4, // Automatically generate a unique string for _id
+    // },
     name: {
         type: String,
         trim: true,

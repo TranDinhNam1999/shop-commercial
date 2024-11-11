@@ -1,5 +1,3 @@
-'use strict'
-
 const keyTokenModel = require("../models/keytoken.model");
 
 class KeyTokenService { 
@@ -20,4 +18,4 @@ class KeyTokenService {
     }
 }
 
-module.exports = new KeyTokenService();
+module.exports = KeyTokenService;

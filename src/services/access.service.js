@@ -1,5 +1,8 @@
 const shopModel = require("../models/shop.model")
 const { createTokenPair } = require('../auth/authUtils')
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const KeyTokenService = require('./keyToken.service');
 
 const RoleShop = {
     SHOP: 'SHOP',
@@ -11,9 +14,12 @@ const RoleShop = {
 class AccessService { 
     static signUp = async ({ name, email, password }) => {
         try {
-
             // step 1: check email exists ???
             const holderShop = await shopModel.findOne({ email }).lean();
+
+            console.log({ name, email, password })
+
+            console.log({ holderShop })
 
             if (holderShop) {
                 return {
@@ -23,7 +29,6 @@ class AccessService {
             }
 
             const passwordHash = await bcrypt.hash(password, 10);
-
             const newShop = await shopModel.create({
                 name,
                 email,
@@ -82,3 +87,5 @@ class AccessService {
         }
     }
 }
+
+module.exports = AccessService;
